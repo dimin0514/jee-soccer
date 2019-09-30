@@ -5,6 +5,8 @@ import java.util.List;
 import com.soccer.web.domains.Player;
 
 public interface PlayerService {
+	//1로그인
+	public Player login(Player param);
 	/**
 	 * 2. 포지션 종류(중복제거,없으면 빈공간)
 	 * SELECT DISTINCT POSITION 포지션

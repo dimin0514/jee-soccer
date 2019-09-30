@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.soccer.web.enums.DBUrl;
 import com.soccer.web.pool.Constants;
 
 public class ConnTest {
@@ -20,7 +21,7 @@ public class ConnTest {
 			
 			try{
 				Class.forName("oracle.jdbc.OracleDriver");
-				conn = DriverManager.getConnection(Constants.ORACLE_URL,Constants.USERNAME,Constants.PASSWORD);
+				conn = DriverManager.getConnection(DBUrl.ORACLE_URL.toString(),Constants.USERNAME,Constants.PASSWORD);
 				if(conn != null) {
 					System.out.println("연결성공");
 					stmt = conn.createStatement(); // 스테이트먼트 한장 만들어라

@@ -2,6 +2,8 @@ package com.soccer.web.serviceimps;
 
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import com.soccer.web.daoimps.PlayerDAOImp;
 import com.soccer.web.daos.PlayerDAO;
 import com.soccer.web.domains.Player;
@@ -27,6 +29,16 @@ public class PlayerServiceImp implements PlayerService{
 	}
 
 	@Override
+	public Player login(Player param) {
+		System.out.println("★★★ 6. PlayerServiceImpl 의 login() 으로 이동 ★★★ ");
+		System.out.println(String.format("param 값 출력 : %s, %s ",
+				param.getPlayerId(), 
+				param.getSolar()));
+		
+		return PlayerDAOImp.getInstance().selectByPlayerIdSolar(param);
+	}
+	
+	@Override
 	public List<String> findPositions() {
 		//PlayerDAO dao=new PlayerDAOImp(); 반복사용되니깐 위로 빼고 생성자에다가~~
 		//List<String> positions= PlayerDAOImp.getInstance().selectPositions();
@@ -38,13 +50,16 @@ public class PlayerServiceImp implements PlayerService{
 		//PlayerDAO dao = new PlayerDAOImp();
 		List<Player> players = PlayerDAOImp.getInstance().selectByTeamIdPosition();
 		return players;
+		//return PlayerDAOImp.getInstance().selectByTeamIdPosition();
 	}
 	
 	@Override
 	public List<Player> findByTeamIdHeightPosition(Player param) {
 		//PlayerDAO dao = new PlayerDAOImp();
-		List<Player> players = PlayerDAOImp.getInstance().selectByTeamIdHeightPosition();
+		List<Player> players = PlayerDAOImp.getInstance().selectByTeamIdHeightPosition(param);
 		return players;
 	}
+
+
 
 }
