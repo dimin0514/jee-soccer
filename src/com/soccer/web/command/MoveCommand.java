@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 public class MoveCommand extends Command{
 	
 	public MoveCommand(HttpServletRequest request) throws Exception {
-		setRequest(request);
+		setRequest(request); //받아서 리퀘스트에  집어넣음 
 		
 		System.out.println("4. 무브커맨드 들어옴");
 		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
@@ -23,6 +23,7 @@ public class MoveCommand extends Command{
 	public void execute() {
 		//super.execute(); //view 만드는곳
 		//request.setAttribute("page", request.getParameter("page"));
+
 		setPage(request.getParameter("page")); //super가 페이지 설정하는 곳인데 먼저 setpage가 되어야 super에서 나머지 생성! 순서중요??
 		super.execute();
 	}

@@ -5,6 +5,8 @@ import java.util.List;
 import com.soccer.web.domains.Player;
 
 public interface PlayerService {
+	//0 조인
+	public boolean join(Player param);
 	//1로그인
 	public Player login(Player param);
 	/**

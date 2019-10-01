@@ -19,6 +19,34 @@ public class PlayerDAOImp implements PlayerDAO{
 	private PlayerDAOImp() {}
 
 	@Override
+	public boolean insertPlayer(Player param) {
+		boolean flag = false;
+		try {
+			String sql = "INSERT INTO PLAYER(PLAYER_ID, SOLAR,TEAM_ID,PLAYER_NAME)\r\n" + 
+					"VALUES(?,?,'K03','홍길동')";
+			
+			PreparedStatement stmt = DatabaseFactory
+					.creatDatabase(Constants.VENDOR)
+					.getConnection()
+					.prepareStatement(sql);
+			stmt.setString(1, param.getPlayerId());
+			stmt.setString(2, param.getSolar());
+			int rs= stmt.executeUpdate();   //성공하면 1 실패하면 0 던짐
+			flag = (rs == 1) ? true:false; 
+			// 리턴타입이 블린이면 flag = (rs == 1); 이렇게만 해도 된다. 
+//			if(rs == 1) {             삼항연산자로 하면 아래가 이렇게 됨!!!
+//				flag = true;
+//			}else {
+//				flag = false;
+//			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	
+	@Override
 	public Player selectByPlayerIdSolar(Player param) {
 		Player player = new Player();
 		String sql = "SELECT *\n" + 
@@ -117,6 +145,7 @@ public class PlayerDAOImp implements PlayerDAO{
 		
 		return list;
 	}
+
 
 
 }

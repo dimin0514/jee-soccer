@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class Command implements Order{
-	protected String action, domain, page, view;
+	protected String action, domain, page, view, login;
 	protected HttpServletRequest request;
 	@Override
 	public void execute() {
@@ -16,7 +16,7 @@ public class Command implements Order{
 				request.getParameter("action"),
 				request.getParameter("page")));
 	
-			this.view = String.format(Constants.DOUBLE_PATH,"facade",page);
+			this.view = String.format(Constants.DOUBLE_PATH,"facade","main");
 
 	}
 

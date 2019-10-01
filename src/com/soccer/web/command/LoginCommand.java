@@ -2,6 +2,7 @@ package com.soccer.web.command;
 
 import javax.servlet.http.HttpServletRequest;
 import com.soccer.web.domains.Player;
+import com.soccer.web.pool.Constants;
 import com.soccer.web.serviceimps.PlayerServiceImp;
 
 public class LoginCommand extends Command{
@@ -18,7 +19,7 @@ public class LoginCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf("."))); //payer.do 에서 player만 가져오는 거...
 		setAction(request.getParameter("action"));
-		execute();
+		this.execute();
 	}
 
 		@Override
@@ -32,13 +33,15 @@ public class LoginCommand extends Command{
 			System.out.println("10. DB에서 커멘드로 전달된 로그인 객체는?"+player);
 			
 			if(player.getPlayerId() ==null) {
-				setPage("fail");
+				//setPage("fail");
+				view = String.format(Constants.DOUBLE_PATH,"facade","fail");
 				System.out.println("로그인실패");
 			}else {
 				setPage(request.getParameter("page"));
+				view = String.format(Constants.DOUBLE_PATH,domain,page);
 				System.out.println("로그인성공");
 			}
-			super.execute();
+
 	
 
 	}

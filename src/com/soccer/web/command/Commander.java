@@ -22,7 +22,13 @@ public class Commander {
 			case MOVE : 
 				cmd = new MoveCommand(request);
 				break;
-			case LOGIN :
+			case CREATE :
+				cmd = new CreateCommand(request);
+				break;
+			case SEARCH : break;
+			case UPDATE : break;
+			case DELETE : break;
+			case LOGIN : 
 				cmd = new LoginCommand(request);
 				break;
 			default :

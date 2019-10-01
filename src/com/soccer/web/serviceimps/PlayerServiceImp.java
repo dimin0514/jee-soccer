@@ -16,8 +16,6 @@ public class PlayerServiceImp implements PlayerService{
 	//}
 	
 	private static PlayerServiceImp instance = new PlayerServiceImp();
-	
-
 	public static PlayerServiceImp getInstance() {
 		return instance;
 	}  //하나만 사용가능해서 set 이 필요가 없고 get 만 있으면 된다.!!
@@ -27,7 +25,13 @@ public class PlayerServiceImp implements PlayerService{
 	//} 셋은 지움
 	private PlayerServiceImp() {  //고정값이라서 private ?
 	}
-
+	
+	@Override
+	public boolean join(Player param) {
+		return PlayerDAOImp.getInstance().insertPlayer(param);
+		
+	}
+	
 	@Override
 	public Player login(Player param) {
 		System.out.println("★★★ 6. PlayerServiceImpl 의 login() 으로 이동 ★★★ ");
@@ -59,6 +63,8 @@ public class PlayerServiceImp implements PlayerService{
 		List<Player> players = PlayerDAOImp.getInstance().selectByTeamIdHeightPosition(param);
 		return players;
 	}
+
+
 
 
 
