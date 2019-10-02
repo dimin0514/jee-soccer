@@ -36,9 +36,13 @@ public class PlayerController extends HttpServlet {
 		
 		switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
 		case CREATE: request.setAttribute("page","login"); break;
+		case LOGIN : request.setAttribute("page", "main"); break;
+		case SEARCH: request.setAttribute("page",request.getParameter("page"));break;
+
 		default:break;
 		
 		}
+		System.out.println("page"+request.getAttribute("page"));
 		
 		
 		Sender.forward(request, response); // 도착지.. movecommand 는 종료됨 즉음. 즉 request 떠나면 죽음

@@ -50,9 +50,9 @@ public class PlayerServiceImp implements PlayerService{
 	}
 
 	@Override
-	public List<Player> findByTeamIdPosition(Player param) {
+	public List<String> findByTeamIdPosition(Player param) {
 		//PlayerDAO dao = new PlayerDAOImp();
-		List<Player> players = PlayerDAOImp.getInstance().selectByTeamIdPosition();
+		List<String> players = PlayerDAOImp.getInstance().selectByTeamIdPosition();
 		return players;
 		//return PlayerDAOImp.getInstance().selectByTeamIdPosition();
 	}

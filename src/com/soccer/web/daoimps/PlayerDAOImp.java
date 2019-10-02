@@ -13,6 +13,7 @@ import com.soccer.web.domains.Player;
 import com.soccer.web.factory.DatabaseFactory;
 import com.soccer.web.pool.Constants;
 
+
 public class PlayerDAOImp implements PlayerDAO{
 	private static PlayerDAOImp instance = new PlayerDAOImp(); 
 	public static PlayerDAOImp getInstance() {return instance;}
@@ -113,8 +114,28 @@ public class PlayerDAOImp implements PlayerDAO{
 	}
 
 	@Override
-	public List<Player> selectByTeamIdPosition() {
-		List<Player> list = new ArrayList<>();
+	public List<String> selectByTeamIdPosition() {
+		List<String> list = new ArrayList<>();
+		Player param = new Player();
+		String sql="SELECT PLAYER_NAME \r\n" + 
+				"FROM PLAYER\r\n" + 
+				"WHERE TEAM_ID LIKE ?\r\n" + 
+				"    AND POSITION LIKE '?'\r\n";
+		try {
+			PreparedStatement stmt = DatabaseFactory.creatDatabase(Constants.VENDOR).getConnection().prepareStatement(sql);
+			
+			stmt.setString(1, param.getTeamId());
+			stmt.setString(2, param.getPosition());
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()) {
+				list.add(rs.getString("PLAYER_NAME"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 

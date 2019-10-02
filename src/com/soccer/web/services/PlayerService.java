@@ -16,7 +16,7 @@ public interface PlayerService {
 	 */
 	public List<String> findPositions();
 	//4. 수원팀(ID: K02)골키퍼
-	public List<Player> findByTeamIdPosition(Player param);
+	public List<String> findByTeamIdPosition(Player param);
 	// 5. 팀id, 키, 플레이어 ,성
 	public List<Player> findByTeamIdHeightPosition(Player param);
 

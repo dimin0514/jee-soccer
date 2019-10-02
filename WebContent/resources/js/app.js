@@ -4,6 +4,7 @@ var app = (()=>{
 			playerService.login(ctx);
 			playerService.join(ctx);
 			playerService.moveJoin(ctx);
+			playerService.search(ctx);
 		}
 		
 	};
@@ -34,6 +35,7 @@ var playerService = (()=>{
 				}else{
 					alert('입력한 값 아이디'+$('#username').val());
 					$('#login_form').attr('action',ctx+'/player.do');
+					$('#login_form').attr('method','POST');
 					$('#login_form').submit();
 				}
 
@@ -46,6 +48,7 @@ var playerService = (()=>{
 				}else{
 					alert('입력한 값 아이디'+$('#username').val());
 					$('#join_form').attr('action',ctx+'/player.do');
+					$('#join_form').attr('method','POST');
 					$('#join_form').submit();
 				}
 			});
@@ -60,6 +63,18 @@ var playerService = (()=>{
 				location.assign(ctx+'/index.jsp');
 			});
 			
+		},
+		search: (ctx)=>{
+			$('#find2').click(()=>{
+				location.assign(ctx+'/player.do?action=search&page=a_position');
+			});
+			
+			$('#find4').click(()=>{
+				location.assign(ctx+'/player.do?action=search&page=4_find_by_teamid_position');
+				
+			});
+			
 		}
+		
 	};
 })();

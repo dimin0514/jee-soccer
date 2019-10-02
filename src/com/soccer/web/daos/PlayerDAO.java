@@ -12,7 +12,7 @@ public interface PlayerDAO {
 	// 2. 포지션 종류(중복제거,없으면 빈공간)
 	public List<String> selectPositions();
 	
-	public List<Player> selectByTeamIdPosition();
+	public List<String> selectByTeamIdPosition();
 	
 	public List<Player> selectByTeamIdHeightPosition(Player param);
 	
