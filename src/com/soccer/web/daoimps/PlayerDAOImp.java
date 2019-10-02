@@ -114,18 +114,18 @@ public class PlayerDAOImp implements PlayerDAO{
 	}
 
 	@Override
-	public List<String> selectByTeamIdPosition() {
+	public List<String> selectByTeamIdPosition(Player param2) {
 		List<String> list = new ArrayList<>();
-		Player param = new Player();
+	
 		String sql="SELECT PLAYER_NAME \r\n" + 
 				"FROM PLAYER\r\n" + 
 				"WHERE TEAM_ID LIKE ?\r\n" + 
-				"    AND POSITION LIKE '?'\r\n";
+				"    AND POSITION LIKE ?\r\n";
 		try {
 			PreparedStatement stmt = DatabaseFactory.creatDatabase(Constants.VENDOR).getConnection().prepareStatement(sql);
 			
-			stmt.setString(1, param.getTeamId());
-			stmt.setString(2, param.getPosition());
+			stmt.setString(1, param2.getTeamId());
+			stmt.setString(2, param2.getPosition());
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()) {

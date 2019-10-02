@@ -11,4 +11,4 @@
 </form>
 
 <!-- 4번 결과 -->
-해당 ID가 ${list.teamId} 팀의 포지션 ${list.position} 일치하는 선수는 홍길동 입니다.
+해당 ID가 ${list.playerName}  일치하는 선수는 홍길동 입니다.

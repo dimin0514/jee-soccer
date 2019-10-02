@@ -52,7 +52,7 @@ public class PlayerServiceImp implements PlayerService{
 	@Override
 	public List<String> findByTeamIdPosition(Player param) {
 		//PlayerDAO dao = new PlayerDAOImp();
-		List<String> players = PlayerDAOImp.getInstance().selectByTeamIdPosition();
+		List<String> players = PlayerDAOImp.getInstance().selectByTeamIdPosition(param);
 		return players;
 		//return PlayerDAOImp.getInstance().selectByTeamIdPosition();
 	}

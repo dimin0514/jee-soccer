@@ -30,8 +30,9 @@ public class SearchCommand extends Command {
 			Player player = new Player();
 			player.setTeamId(request.getParameter("teamId"));
 			player.setPosition(request.getParameter("position"));
+			System.out.println("들어가는 팀id는?"+request.getParameter("teamId"));
 			request.setAttribute("list", PlayerServiceImp.getInstance().findByTeamIdPosition(player));
-			
+			System.out.println("리스트는?"+request.getAttribute("list"));
 			break;
 		}
 
